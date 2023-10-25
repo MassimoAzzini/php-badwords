@@ -3,12 +3,12 @@
 $text = $_GET['text'] ?? "Testo non inserito";
 $censoredWord = $_GET['censoredWord'] ?? 'Nessuna parola inserita';
 
-$text_explode = explode(' ', $text);
-$text_words = count($text_explode);
+$text_split = str_split($text);
+$text_characters = count($text_split);
 
 $text_replace = str_replace($censoredWord, '***', $text);
-$text_replace_explode = explode(' ', $text_replace);
-$text_replace_words = count($text_replace_explode);
+$text_replace_split = str_split($text_replace);
+$text_replace_characters = count($text_replace_split);
 
 
 ?>
@@ -29,14 +29,14 @@ $text_replace_words = count($text_replace_explode);
       <h3>TESTO INSERITO:</h3>
       <p><?php echo "$text" ?></p>
       <h3>PAROLE NEL TESTO:</h3>
-      <p><?php echo "$text_words" ?></p>
+      <p><?php echo "$text_characters" ?></p>
     </div>
 
     <div>
     <h3>TESTO CENSURATO:</h3>
       <p><?php echo "$text_replace" ?></p>
       <h3>PAROLE NEL TESTO:</h3>
-      <p><?php echo "$text_replace_words" ?></p>
+      <p><?php echo "$text_replace_characters" ?></p>
     </div>
 
 
