@@ -1,12 +1,16 @@
 <?php 
 
 $text = $_GET['text'] ?? "Testo non inserito";
-$censoredWord = $_GET['censoredWord'] ?? 'Nessuna parola inserita';
+$censoredWord = $_GET['censoredWord'] ?? 'Nessuna parola scelta';
 
 $text_split = str_split($text);
 $text_characters = count($text_split);
 
-$text_replace = str_replace($censoredWord, '***', $text);
+// replace case-insensitive
+$text_replace = str_ireplace($censoredWord, '***', $text);
+
+// replace case-sensitive
+// $text_replace = str_replace($censoredWord, '***', $text);
 $text_replace_split = str_split($text_replace);
 $text_replace_characters = count($text_replace_split);
 
@@ -37,6 +41,9 @@ $text_replace_characters = count($text_replace_split);
       <p><?php echo "$text_replace" ?></p>
       <h3>PAROLE NEL TESTO:</h3>
       <p><?php echo "$text_replace_characters" ?></p>
+      <h3>PAROLA DA CENSURARE:</h3>
+      <p><?php echo "$censoredWord" ?></p>
+
     </div>
 
 
